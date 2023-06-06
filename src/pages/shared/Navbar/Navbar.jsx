@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react';
 import { FaMoon, FaShoppingCart, FaSun } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../provider/ThemeProvider/ThemeProvider';
+import useAuth from '../../../components/hooks/useAuth';
 
 const Navbar = () => {
+    const { user, logOut } = useAuth()
+
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const handleToggleTheme = () => {
@@ -13,6 +16,10 @@ const Navbar = () => {
         const htmlElement = document.getElementById('html-theme');
         htmlElement.setAttribute('data-theme', theme);
       };
+      const handleLogOut = () => {
+        logOut()
+
+    }
     const navbar = <>
         <Link to="/">Home</Link>
         <Link to="/instructors" className="">Instructors</Link>
@@ -20,8 +27,14 @@ const Navbar = () => {
         
         <Link to="/dashboard">Dashboard </Link>
         
-        <Link><button className='' onClick={handleToggleTheme}> {isDarkMode ? <FaMoon /> : <FaSun />}</button></Link>
-  
+        <Link><button className='' onClick={handleToggleTheme}> {isDarkMode ?<FaSun /> : <FaMoon /> }</button></Link>
+        {
+            user ? <><div className="avatar placeholder">
+                <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                    <img src={user?.photoURL} alt="" />
+                </div>
+            </div><button onClick={handleLogOut} className="font-semibold btn- btn-outline btn-success mx-4">Log out</button></> : <Link to="/login" className="font-semibold mx-4">Login</Link>
+        }
         </>
     return (
         <div className="navbar fixed z-10 bg-opacity-70 bg-black text-white w-full">
