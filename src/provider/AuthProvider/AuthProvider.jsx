@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, updateProfile, FacebookAuthProvider } from "firebase/auth";
 import { app } from '../../firebase/firebase.config';
+import axios from 'axios';
 export const AuthContext = createContext(null)
 
 
@@ -35,16 +36,32 @@ const AuthProvider = ({ children }) => {
     }
    
     //capture user state
-    // TODO JWT
+    // TODO JWT- done
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-        })
-        return () => {
-            setLoading(true)
-            return unsubscribe();
+            if(currentUser){
+                axios.post('https://bistro-boss-server-rjk-jami.vercel.app/jwt', {email : currentUser.email})
+                .then(data=>{
+                    // set when user = 1
+                    localStorage.setItem('access-token' , data.data.token)
+
+            })
+
         }
-    }, [])
+        else{
+            // remove when user = 0
+            localStorage.removeItem("access-token")
+        }
+
+
+        setLoading(false)
+})
+return ()=>{
+    setLoading(true)
+   return unsubscribe();
+}
+},[ ])
     // add nes user's name and photo
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {

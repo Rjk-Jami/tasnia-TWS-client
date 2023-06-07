@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../components/hooks/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -23,7 +25,25 @@ const SignUp = () => {
 
             updateUserProfile(data.name, data.photo)
             .then(res=>{
-                navigate(from, { replace: true });
+                    axios.post('http://localhost:5000/users',{name: data.name, email:data.email, photo:data.photo, gender:data.gender,
+                    address:data.address, phoneNumber:data.phoneNumber })
+                    .then(res=> {
+                        console.log(res.data)
+                        if(res.data.insertedId){
+                            reset();
+                            Swal.fire({
+                                position: 'top',
+                                icon: 'success',
+                                title: 'Successfully create a account',
+                                showConfirmButton: false,
+                                timer: 1500
+                                
+                            })
+                            navigate(from, { replace: true });
+                        }
+                      
+                    })
+                
 
             }
 

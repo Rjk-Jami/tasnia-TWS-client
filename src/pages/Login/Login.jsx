@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -15,6 +16,8 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('')  
+    
+    // login
     const onSubmit = (data) => {
         console.log(data);
         // Perform login logic here
@@ -41,16 +44,28 @@ const Login = () => {
             })
     }
     
-    
+    //password show and hide
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
+    // google login
     const handleGoogleLogin =()=>{
         googleLogin()
         .then(result=> {
             const loggedUser = result.user
             console.log(loggedUser)
+            axios.post('http://localhost:5000/users',{name: loggedUser?.displayName, email:loggedUser?.email, photo:loggedUser?.photoURL})
+            .then(res=>{
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                    
+                })
+            })
             navigate(from, { replace: true });
 
         })
