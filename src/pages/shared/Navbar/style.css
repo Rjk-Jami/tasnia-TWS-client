@@ -1,0 +1,19 @@
+.password-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px;
+  }
+  
+  .password-input-wrapper input[type="password"] {
+    flex: 1;
+    border: none;
+    outline: none;
+  }
+  
+  .password-input-wrapper .password-icon {
+    cursor: pointer;
+    margin-left: 8px;
+    color: #888;
+  }

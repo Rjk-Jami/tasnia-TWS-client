@@ -33,12 +33,9 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithPopup(auth, GoogleProvider)
     }
-    // login by facebook
-    const facebookLogin = () => {
-        setLoading(true)
-        return (auth, FacebookProvider)
-    }
+   
     //capture user state
+    // TODO JWT
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -62,7 +59,6 @@ const AuthProvider = ({ children }) => {
         login,
         logOut,
         googleLogin,
-        facebookLogin,
         updateUserProfile,
         
 

@@ -9,7 +9,8 @@ const Navbar = () => {
 
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const handleToggleTheme = () => {
+    const handleToggleTheme = (e) => {
+        e.preventDefault();
         toggleTheme();
         setIsDarkMode(!isDarkMode);
     
@@ -27,7 +28,7 @@ const Navbar = () => {
         
         <Link to="/dashboard">Dashboard </Link>
         
-        <Link><button className='' onClick={handleToggleTheme}> {isDarkMode ?<FaSun /> : <FaMoon /> }</button></Link>
+        <Link><button type="button" className='' onClick={handleToggleTheme}> {isDarkMode ?<FaSun /> : <FaMoon /> }</button></Link>
         {
             user ? <><div className="avatar placeholder">
                 <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
@@ -43,7 +44,7 @@ const Navbar = () => {
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
-                <ul tabIndex={0} className=" menu font-semibold menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabIndex={0} className="text-black menu font-semibold menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     {navbar}
                 </ul>
             </div>
