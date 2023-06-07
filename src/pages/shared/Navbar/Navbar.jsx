@@ -52,7 +52,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-            <ul className=" menu font-semibold space-x-4 menu-horizontal px-1 hidden lg:flex">
+            <ul className=" menu font-semibold space-x-4 menu-horizontal px-1 hidden lg:flex items-center">
                 {navbar}
 
             </ul>
