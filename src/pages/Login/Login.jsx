@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../components/hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -12,12 +14,33 @@ const Login = () => {
     const { user, login, googleLogin } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-    
-    
+    const [error, setError] = useState('')  
     const onSubmit = (data) => {
         console.log(data);
         // Perform login logic here
-    };
+
+        login(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+              
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'successfully logged in',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  setError('')
+                  navigate(from, {replace:true});
+            })
+            .catch(error => {
+                
+                console.log(error)
+                setError(error.message)
+            })
+    }
+    
     
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -35,6 +58,11 @@ const Login = () => {
     }
 
     return (
+       <>
+        <Helmet>
+                <title>Tasnia YMS | Login</title>
+            </Helmet> 
+
         <div className="hero min-h-screen">
             <div className="hero-content  flex-col lg:flex-row-reverse">
                 <div className="text-center hidden   lg:block  lg:text-left">
@@ -68,6 +96,10 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary" type='submit'>Login</button>
                             </div>
+                            {/* error message from firebase */}
+                            {
+                                error ?? <p className='bg-text-red-500'>{error}</p>
+                            }
                             <div className="text-center my-3">
                                     <p className='text-sm'>New here?<Link to="/signUp"><span className='font-bold text-accent'> Create a New Account</span></Link></p>
                                 </div>
@@ -82,6 +114,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+       </>
     );
 };
 
