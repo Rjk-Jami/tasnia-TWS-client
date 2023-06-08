@@ -3,10 +3,13 @@ import { FaMoon, FaShoppingCart, FaSun } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../../../provider/ThemeProvider/ThemeProvider';
 import useAuth from '../../../components/hooks/useAuth';
+import useAdmin from '../../../components/hooks/useAdmin';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const admin = true
+//   const admin = true
+const [isAdmin , isAdminLoading] =useAdmin()
+
   const location = useLocation();
 
   const [isOnDashboard, setIsOnDashboard] = useState(location.pathname.includes('/dashboard'));
@@ -26,17 +29,20 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut();
   };
+  
 
   const navbar = (
     <>
       <Link to="/">Home</Link>
       <Link to="/instructors" className="">Instructors</Link>
       <Link to="/classes">Classes</Link>
-      {admin ? (
+      {  isAdmin ? (
         <Link to="/dashboard/adminhome">Dashboard </Link>
       ) : (
         <Link to="/dashboard/userhome">Dashboard </Link>
       )}
+     
+
       <Link>
         <button type="button" className='' onClick={handleToggleTheme}>
           {isDarkMode ? <FaSun /> : <FaMoon />}

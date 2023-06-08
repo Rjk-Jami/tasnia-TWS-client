@@ -11,6 +11,7 @@ import DashBoard from "../layouts/DashBoard";
 import PrivateRoutes from "./PrivateRoutes";
 import UserHome from "../pages/DashBoard/UserHome/UserHome";
 import AdminHome from "../pages/DashBoard/AdminHome/AdminHome";
+import ManageUsers from "../pages/DashBoard/ManageUsers/ManageUsers";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -50,6 +51,10 @@ import AdminHome from "../pages/DashBoard/AdminHome/AdminHome";
         {
           path:'adminhome',
           element:<AdminHome></AdminHome>
+        },
+        {
+          path:'manageUsers',
+          element:<ManageUsers></ManageUsers>
         },
       ]
     }
