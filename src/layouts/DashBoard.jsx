@@ -8,16 +8,12 @@ const DashBoard = () => {
     const [isAdmin, isAdminLoading] = useAdmin()
     
     // const admin = true;
-        // Reload the page when the component mounts
    
-    if (isAdminLoading) {
-        
-        return <p>Loading...</p>;
-    }
+    
     return (
         <>
             <Navbar></Navbar>
-            <div className="drawer drawer-end lg:drawer-open">
+            <div className="drawer  lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
                   
