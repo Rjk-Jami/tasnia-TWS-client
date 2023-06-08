@@ -14,13 +14,13 @@ const PageTitle = ({title}) => {
         left: "50%",
         transform: "translate(-50%,-50%)"
       };
-      const image1 = "https://i.ibb.co/FBP1bhn/photo-1549576490-b0b4831ef60a-ixlib-rb-4-1.jpghttps://i.ibb.co/PzLP4Y7/photo-1549576490-b0b4831ef60a-ixlib-rb-4-2.jpg"
+      const image1 = "https://i.ibb.co/2W7Xn3Z/group-young-sporty-people-sitting-lotus-pose-close.jpg"
     return (
         <div className="">
 <Parallax  bgImage={image1}  strength={500}>
       <div className='bg-gray-700 bg-opacity-50 object-center	' style={{ height: 400 }}>
         <div  style={insideStyles}>
-            <h2 className='font-mono text-7xl font-extrabold text-white'>{title}</h2>
+            <h2 className='font-mono text-4xl text-center md:text-7xl font-extrabold text-white'>{title}</h2>
         </div>
       </div>
     </Parallax>
