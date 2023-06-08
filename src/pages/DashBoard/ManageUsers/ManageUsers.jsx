@@ -1,6 +1,6 @@
 import React from 'react';
 import useAxiosSecure from '../../../components/hooks/useAxiosSecure';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt, FaUserCog, FaUserFriends } from 'react-icons/fa';
 import axios from 'axios';

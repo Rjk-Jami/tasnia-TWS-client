@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import UserHome from "../pages/DashBoard/UserHome/UserHome";
 import AdminHome from "../pages/DashBoard/AdminHome/AdminHome";
 import ManageUsers from "../pages/DashBoard/ManageUsers/ManageUsers";
+import InstructorHome from "../pages/DashBoard/InstructorHome/InstructorHome";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -51,6 +52,10 @@ import ManageUsers from "../pages/DashBoard/ManageUsers/ManageUsers";
         {
           path:'adminhome',
           element:<AdminHome></AdminHome>
+        },
+        {
+          path:'instructorhome',
+          element:<InstructorHome></InstructorHome>
         },
         {
           path:'manageUsers',

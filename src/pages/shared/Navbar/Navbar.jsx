@@ -4,11 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../../../provider/ThemeProvider/ThemeProvider';
 import useAuth from '../../../components/hooks/useAuth';
 import useAdmin from '../../../components/hooks/useAdmin';
+import useInstructor from '../../../components/hooks/useInstructor';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
 //   const admin = true
 const [isAdmin , isAdminLoading] =useAdmin()
+const [isInstructor, isInstructorLoading] = useInstructor();
 
   const location = useLocation();
 
@@ -38,7 +40,7 @@ const [isAdmin , isAdminLoading] =useAdmin()
       <Link to="/classes">Classes</Link>
       {  isAdmin ? (
         <Link to="/dashboard/adminhome">Dashboard </Link>
-      ) : (
+      ) : isInstructor ?(<Link to="/dashboard/instructorhome">Dashboard </Link>) : (
         <Link to="/dashboard/userhome">Dashboard </Link>
       )}
      
