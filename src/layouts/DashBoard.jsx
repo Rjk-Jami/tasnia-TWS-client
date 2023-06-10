@@ -12,11 +12,11 @@ const DashBoard = () => {
   return (
     <>
       <Navbar />
-      <div className="drawer  lg:drawer-open">
+      <div className="drawer  lg:drawer-open ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col  justify-center">
-          <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden my-4">
-            Menu
+        <div className="drawer-content flex flex-col  justify-center overflow-auto">
+          <label htmlFor="my-drawer-2" className=" lg:hidden  text-center btn w-1/3 mx-auto">
+            Dashboard Menu
           </label>
           <Outlet />
         </div>

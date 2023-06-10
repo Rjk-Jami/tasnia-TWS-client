@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaRegSun } from 'react-icons/fa';
 import useClass from '../../../components/hooks/useclass';
@@ -15,6 +15,19 @@ const MyClasses = () => {
   const [updateItem, setUpdateItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // State variable for modal visibility
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Escape') {
+        setIsModalOpen(false); // Close the modal on "Esc" key press
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
   const handleUpdate = (item) => {
     setUpdateItem(item);
     setIsModalOpen(true); // Open the modal
@@ -86,7 +99,7 @@ const MyClasses = () => {
                       {item.status === 'denied' && <button className="btn join-item btn-xs btn-error">denied</button>}
                     </div>
                   </td>
-                  <th>{item?.feedback}</th>
+                  <th>{item?.status === 'denied' && <div>{item.feedback}</div>}</th>
                   <th>
                     <button onClick={() => handleUpdate(item)} className="btn btn-warning btn-xs"><FaRegSun></FaRegSun></button>
                   </th>

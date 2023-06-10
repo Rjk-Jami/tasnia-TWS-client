@@ -15,6 +15,7 @@ import ManageUsers from "../pages/DashBoard/ManageUsers/ManageUsers";
 import InstructorHome from "../pages/DashBoard/InstructorHome/InstructorHome";
 import AddAClass from "../pages/DashBoard/AddAClass/AddAClass";
 import MyClasses from "../pages/DashBoard/MyClasses/MyClasses";
+import ManageClasses from "../pages/DashBoard/ManageClasses/ManageClasses";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -62,6 +63,10 @@ import MyClasses from "../pages/DashBoard/MyClasses/MyClasses";
         {
           path:'manageUsers',
           element:<ManageUsers></ManageUsers>
+        },
+        {
+          path:'manageClasses',
+          element:<ManageClasses></ManageClasses>
         },
         {
           path:'addAClass',
