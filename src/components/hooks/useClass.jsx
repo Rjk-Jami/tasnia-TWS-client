@@ -9,13 +9,14 @@ const useClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const {data: classes = [], refetch} = useQuery({
         queryKey: ['classes' , user?.email],
+        
 
         queryFn: async()=>{
             const res = await axiosSecure.get(`/classes?email=${user?.email}`)
             return res.data;
         }
     })
-    return [classes, refetch]
+    return [classes, refetch];
 };
 
 export default useClass;
