@@ -18,10 +18,14 @@ const AddAClass = () => {
             name,
             image,
             price: parseFloat(price),
-            seats: parseFloat(seats)
+            seats: parseFloat(seats),
+            
         }
         newClass.InstructorName = user?.displayName;
         newClass.InstructorEmail = user?.email;
+        newClass.status = 'pending'
+        newClass.TotalEnrolled = 0;
+        newClass.TotalEnrolled = parseFloat(newClass.TotalEnrolled)
         console.log(newClass)
         axiosSecure.post('/classes',newClass)
         .then(res=>{
