@@ -100,14 +100,14 @@ const ManageUsers = () => {
                     <button
                       onClick={() => handleMakeInstructor(user._id)}
                       className="btn btn-xs"
-                      disabled={user.role === 'admin' || user.role === 'instructor'}
+                      disabled={user.role === 'instructor'}
                     >
                       Instructor
                     </button>
                     <button
                       onClick={() => handleMakeAdmin(user._id)}
                       className="btn btn-xs"
-                      disabled={user.role === 'admin' || user.role === 'instructor'}
+                      disabled={user.role === 'admin' }
                     >
                       Admin
                     </button>
