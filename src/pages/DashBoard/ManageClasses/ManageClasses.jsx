@@ -99,12 +99,12 @@ const ManageClasses = () => {
 
     return (
         <>
-        <div className='overflow-x-scroll'>
+        <div className='overflow-x-auto w-full'>
             <Helmet>
                 <title>Tasnia YMS | Manage Classes</title>
             </Helmet>
-            <div className="overflow-x-auto   ">
-                <table className="table  text-center">
+            <div className="overflow-x-auto w-full  ">
+                <table className="table  text-center ">
                     {/* head */}
                     <thead>
                         <tr>
@@ -112,7 +112,7 @@ const ManageClasses = () => {
                             <th>Image</th>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Total Enrolled Students</th>
+                            <th  className='p-0'>Total Enrolled Students</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -122,7 +122,7 @@ const ManageClasses = () => {
                         {/* row 1 */}
                         {classes.map((item, index) => (
                             <tr key={item?._id}>
-                                <th>{index + 1}</th>
+                                <th><span className='text-xs'>{index + 1}</span></th>
                                 <td>
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
@@ -131,30 +131,30 @@ const ManageClasses = () => {
                                     </div>
                                 </td>
                                 <td className=' text-left'>
-                                    <p className='flex gap-2'><span className='font-semibold'>Name: </span>{item?.name}</p>
+                                    <p className='flex gap-2 text-xs'><span className='font-semibold'>Name: </span>{item?.name}</p>
                                     <br />
-                                    <p className='flex gap-2'><span className='font-semibold'>Instructor Name: </span> {item?.InstructorName}</p>
+                                    <p className='flex gap-2 text-xs'><span className='font-semibold'>Instructor Name: </span> {item?.InstructorName}</p>
                                     <br />
-                                    <p className='flex gap-2'><span className='font-semibold'>Instructor Email: </span>{item?.InstructorEmail}</p>
+                                    <p className='flex gap-2 text-xs'><span className='font-semibold'>Instructor Email: </span>{item?.InstructorEmail}</p>
                                 </td>
-                                <th><span className="badge badge-ghost badge-sm ">Price: {item?.price}</span><br />
+                                <th  className='px-0'><span className="text-xs font-thin">Price: {item?.price}</span><br />
                                     <span className="text-xs font-thin">Available seats: {item?.seats}</span>
                                 </th>
-                                <th>{item?.TotalEnrolled}</th>
+                                <th className='p-0'> <span className='text-xs'>{item?.TotalEnrolled}</span></th>
                                 <td>
                                     <div className="join join-vertical lg:join-horizontal">
-                                        {item.status === 'pending' && <button className="btn join-item btn-xs btn-secondary">pending</button>}
-                                        {item.status === 'approve' && <button className="btn join-item btn-xs btn-success">approve</button>}
-                                        {item.status === 'denied' && <button className="btn join-item btn-xs btn-error">denied</button>}
+                                        {item.status === 'pending' && <button className="mx-0 btn join-item btn-xs btn-secondary">pending</button>}
+                                        {item.status === 'approve' && <button className="mx-0 btn join-item btn-xs btn-success">approve</button>}
+                                        {item.status === 'denied' && <button className= "mx-0 btn join-item btn-xs btn-error">denied</button>}
                                     </div>
                                 </td>
-                                <td>
-                                    <div className="join join-vertical lg:join-horizontal">
+                                <td >
+                                    <div className="join mx-0 join-vertical lg:join-horizontal">
 
-                                        <button onClick={() => handleClassApprove(item)} className="btn join-item btn-xs btn-success" disabled={item.status === 'approve' || item.status === 'denied'}>approve</button>
-
-                                        <button onClick={() => handleClassDenied(item)} className="btn join-item btn-xs btn-error" disabled={item.status === 'approve' || item.status === 'denied'}>denied</button>
-                                        <button onClick={() => sendFeedback(item)} className="btn join-item btn-xs btn-warning" >send feedback</button>
+                                        <button onClick={() => handleClassApprove(item)} className="btn join-item btn-xs btn-success text-xs" disabled={item.status === 'approve' || item.status === 'denied'}>approve</button>
+ 
+                                        <button onClick={() => handleClassDenied(item)} className="btn join-item btn-xs btn-error text-xs" disabled={item.status === 'approve' || item.status === 'denied'}>denied</button>
+                                        <button onClick={() => sendFeedback(item)} className="btn join-item btn-xs btn-warning " >send feedback</button>
                                     </div>
                                 </td>
 

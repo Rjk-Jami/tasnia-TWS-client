@@ -6,13 +6,15 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAdmin from '../../components/hooks/useAdmin';
 
 const Login = () => {
+    const [isAdmin, isAdminLoading] =useAdmin();
     const navigate = useNavigate();
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
 
-    const { user, login, googleLogin } = useAuth()
+    const { user, login, googleLogin,setLoading } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('')  
@@ -38,7 +40,7 @@ const Login = () => {
                   navigate(from, {replace:true});
             })
             .catch(error => {
-                
+                setLoading(false)
                 console.log(error)
                 setError(error.message)
             })
@@ -66,10 +68,15 @@ const Login = () => {
                     
                 })
             })
+            // if(isAdmin){
+            //     navigate("/dashboard/adminhome", { replace: true });
+            // }
             navigate(from, { replace: true });
 
         })
-        .catch(error=>console.log(error))
+        .catch(error=>{
+            setLoading(false)
+            console.log(error)})
     }
 
     return (

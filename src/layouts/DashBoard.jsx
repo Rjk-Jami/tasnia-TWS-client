@@ -26,7 +26,7 @@ const DashBoard = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/adminhome">
+                  <NavLink to="/dashboard/home">
                     <FaHome className="text-3xl text-neutral" />
                     Admin Home
                   </NavLink>
@@ -47,7 +47,7 @@ const DashBoard = () => {
             ) : isInstructor ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/instructorhome">
+                  <NavLink to="/dashboard/home">
                     <FaHome className="text-3xl text-neutral" />
                     Instructor Home
                   </NavLink>
@@ -68,7 +68,7 @@ const DashBoard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/userhome">
+                  <NavLink to="/dashboard/home">
                     <FaHome className="text-3xl text-neutral" />
                     User Home
                   </NavLink>

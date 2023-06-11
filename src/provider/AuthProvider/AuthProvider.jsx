@@ -77,11 +77,12 @@ return ()=>{
         logOut,
         googleLogin,
         updateUserProfile,
-        
+        setLoading,
 
 
 
     }
+   
 
     return (
         <AuthContext.Provider value={authInfo}>

@@ -39,9 +39,9 @@ const [isInstructor, isInstructorLoading] = useInstructor();
       <Link to="/instructors" className="">Instructors</Link>
       <Link to="/classes">Classes</Link>
       {  isAdmin ? (
-        <Link to="/dashboard/adminhome">Dashboard </Link>
-      ) : isInstructor ?(<Link to="/dashboard/instructorhome">Dashboard </Link>) : (
-        <Link to="/dashboard/userhome">Dashboard </Link>
+        <Link to="/dashboard/home">Dashboard </Link>
+      ) : isInstructor ?(<Link to="/dashboard/home">Dashboard </Link>) : (
+        <Link to="/dashboard/home">Dashboard </Link>
       )}
      
 
