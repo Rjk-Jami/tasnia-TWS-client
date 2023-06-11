@@ -2,68 +2,125 @@ import React, { useCallback, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { Collapse } from 'react-collapse';
+import { FcExpand, FcNext } from "react-icons/fc";
+import useAuth from '../../components/hooks/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Fade } from 'react-awesome-reveal';
 
 const InstructorsMentor = () => {
-    const height = 100;
-    const accessibilityIds = {
-        checkbox: 'accessible-marker-example1',
-        button: 'accessible-marker-example2'
-      };
-      const [isCheckboxCollapseOpen, setIsCheckboxCollapseOpen] = useState(false);
-  const [isButtonCollapseOpen, setIsButtonCollapseOpen] = useState(false);
+  const [classesInfo, setClassesInfo] = useState([]);
+  const [isButtonCollapseOpen, setIsButtonCollapseOpen] = useState([]);
+  const [isCollapseLoading, setIsCollapseLoading] = useState([]);
 
-  const onChange = useCallback(
-    ({target: {checked}}) => setIsCheckboxCollapseOpen(checked),
-    [setIsCheckboxCollapseOpen]
+  const InstructorDetails = async (email) => {
+    setIsCollapseLoading(true);
+    const res = await axios.get(`http://localhost:5000/classes/${email}`);
+    console.log(res.data);
+    setClassesInfo(res.data);
+    setIsCollapseLoading(false);
+  };
+
+  const { user, loading } = useAuth();
+
+  const { data: instructorsMentor = [], refetch } = useQuery({
+    queryKey: ['instructors', user?.email],
+    queryFn: async () => {
+      const res = await axios.get(`http://localhost:5000/instructorsMentor`)
+      return res.data;
+    }
+  });
+
+  const toggleCollapse = useCallback(
+    (index) => {
+      setIsButtonCollapseOpen((prevState) => {
+        const newState = [...prevState];
+        newState[index] = !newState[index];
+        return newState;
+      });
+    },
+    []
   );
 
-  const onClick = useCallback(
-    () => setIsButtonCollapseOpen(!isButtonCollapseOpen),
-    [isButtonCollapseOpen]
-  );
-    return (
-        <div>
-            <Helmet>
-                <title>Tasnia YMS | Instructors</title>
-            </Helmet>
-            <PageTitle title={"Our Instructors"}></PageTitle>
-            <p className='text-center text-2xl font-bold my-3'>Decade of Teaching <span className='text-warning'>Experience</span></p>
+  return (
+    <div>
+      <Helmet>
+        <title>Tasnia YMS | Instructors</title>
+      </Helmet>
+      
+        
+     
+      <PageTitle title={"Our Instructors"}></PageTitle>
+      <h2 className='text-center text-2xl font-bold my-3'>Decade of Teaching <span className='text-warning'>Experience</span></h2>
 
-
-            <div className=" container mx-auto p-3 rounded-xl bg-base-100 shadow-xl grid grid-cols-3 grid-flow-col gap-4 items-center " data-theme="pastelZ">
-                <div className="">
-                    <img className="mask mask-hexagon-2 col-span-1 ms-auto " src="https://i.ibb.co/WkyC4pM/focused-young-indian-man-meditating-lotus-pose-126.jpg" />
-                </div>
-                <div className="col-span-2">
-                    <h2 className="text-2xl font-bold">{"name"}</h2>
-                    <div>
-           
-            <div className="config">
-              <button
-                aria-controls={accessibilityIds.button}
-                aria-expanded={isButtonCollapseOpen}
-                onClick={onClick}
-                type="button">
-                Reveal content
-              </button>
-            </div>
-            <Collapse
-              isOpened={isButtonCollapseOpen}>
-              <div style={{height}} id={accessibilityIds.button} className="blob" />
-            </Collapse>
-          </div>
-                    <p></p>
-                    <div className=" justify-end">
-                        <button className="btn btn-primary">Watch</button>
+      <div className="grid  grid-cols-1 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
+        {instructorsMentor.map((instructor, index) => (
+          <Card key={instructor._id} className=''>
+            <CardActionArea>
+            <Fade cascade damping={0.1}>
+              <CardMedia
+              className='h-60'
+                component="img"
+                height="140"
+                image={instructor.photo}
+                alt="instructor"
+              />
+             
+              <CardContent className='space-x-1'>
+                <Typography gutterBottom variant="h5" component="div" className='my-0'>
+                  {instructor.name}
+                </Typography>
+                <Typography gutterBottom variant="p" className='text-xs my-0' component="div">
+                  Email: {instructor.email}
+                </Typography>
+                <Typography gutterBottom variant="p" className='text-xs my-0' component="div">
+                  <div className="config">
+                    <button
+                      aria-controls={index}
+                      aria-expanded={isButtonCollapseOpen[index]}
+                      onClick={() => {
+                        toggleCollapse(index);
+                        InstructorDetails(instructor.email);
+                      }}
+                      type="button"
+                      className='btn btn-link btn-info flex items-center px-0'>
+                      Classes name <FcExpand></FcExpand>
+                    </button>
+                  </div>
+                </Typography>
+                <Typography className='overflow-auto' variant="body2" color="text.secondary">
+                  <Collapse isOpened={isButtonCollapseOpen[index]}>
+                    <div id={index} className="blob">
+                      {/* collapse content */}
+                      {isCollapseLoading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <>
+                          {classesInfo.instructorEmail === instructor.email && (
+                            <>
+                              <span className='text-semibold'>Total class:</span> {classesInfo.count}
+                              <br />
+                              {classesInfo.count > 0 && <span className='font-semibold'>classes:</span>}
+                              {classesInfo.className.map((name, i) => (
+                                <p key={i}>{name}</p>
+                              ))}
+                            </>
+                          )}
+                        </>
+                      )}
                     </div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-    );
+                  </Collapse>
+                </Typography>
+              </CardContent>
+              </Fade>
+            </CardActionArea>
+          </Card>
+        ))}
+      </div>
+    
+    </div>
+  );
 };
 
 export default InstructorsMentor;
