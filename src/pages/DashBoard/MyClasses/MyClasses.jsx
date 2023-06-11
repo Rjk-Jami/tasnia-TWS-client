@@ -34,7 +34,10 @@ const MyClasses = () => {
   };
 
   const onSubmitUpdate = (data) => {
+    data.seats = parseFloat(data.seats)
+    data.seats = parseFloat(data.seats)
     console.log(data);
+
     axiosSecure.patch(`/updateClass/${updateItem?._id}`, data)
       .then((res) => {
         if (res.data.modifiedCount) {
@@ -43,7 +46,7 @@ const MyClasses = () => {
           Swal.fire({
             position: 'top',
             icon: 'success',
-            title: `Make Admin`,
+            title: `updated`,
             showConfirmButton: false,
             timer: 1500,
           });
