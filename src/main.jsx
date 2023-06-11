@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom'
 import router from './routers/router'
 import AuthProvider from './provider/AuthProvider/AuthProvider'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import 'animate.css';
 
 const queryClient = new QueryClient()
 

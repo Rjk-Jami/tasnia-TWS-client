@@ -7,7 +7,7 @@ import useAuth from '../../components/hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import { Fade } from 'react-awesome-reveal';
+import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 
 const InstructorsMentor = () => {
   const [classesInfo, setClassesInfo] = useState([]);
@@ -52,7 +52,7 @@ const InstructorsMentor = () => {
         
      
       <PageTitle title={"Our Instructors"}></PageTitle>
-      <h2 className='text-center text-2xl font-bold my-3'>Decade of Teaching <span className='text-warning'>Experience</span></h2>
+      <Zoom><h2 className='text-center text-2xl font-bold my-3'>Decade of Teaching <span className='text-warning'>Experience</span></h2></Zoom>
 
       <div className="grid  grid-cols-1 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
         {instructorsMentor.map((instructor, index) => (
