@@ -68,7 +68,7 @@ const CheckOutFrom = ({selectedClass}) => {
         if (confirmError) {
             console.log(confirmError)
         }
-        console.log("paymentIntent", paymentIntent)
+        
         setProcessing(false)
         if (paymentIntent.status === "succeeded"){
             setTransactionId(paymentIntent.id)
@@ -84,7 +84,8 @@ const CheckOutFrom = ({selectedClass}) => {
                 selectedClass : _id
         }
         console.log(payment)
-        axiosSecure.post('/payments', payment)
+
+        axiosSecure.post('/payments', {payment, selectedClass})
         .then(res=>{
             if(res.data.insertedResult.insertedId){
                 Swal.fire({
