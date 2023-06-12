@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt, FaUserCog, FaUserFriends } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -64,8 +65,9 @@ const ManageUsers = () => {
       <Helmet>
         <title>Tasnia YMS | Manage Users</title>
       </Helmet>
+      <TitleStyle first={"Manage"} second={"Users"}></TitleStyle>
       <div>
-        <p className="text-3xl font-semibold">Total Users: {users.length}</p>
+        <p className=" font-semibold badge badge-lg bg-warning">Total Users: {users.length}</p>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -83,7 +85,7 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {users.map((user, index) => (
+            {users && users.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
                 <td>

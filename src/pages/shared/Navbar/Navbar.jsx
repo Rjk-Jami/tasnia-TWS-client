@@ -80,6 +80,11 @@ const [isInstructor, isInstructorLoading] = useInstructor();
             {navbar}
           </ul>
         </div>
+        <div className="avatar">
+  <div className="w-10 rounded">
+    <img src="https://i.ibb.co/0r2pGbd/pngtree-girl-meditating-sports-illustration-png-im.png" />
+  </div>
+</div>
         <a className="btn btn-ghost normal-case text-xl">Tasnia-YMS</a>
       </div>
 

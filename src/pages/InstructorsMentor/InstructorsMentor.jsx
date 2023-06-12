@@ -54,7 +54,7 @@ const InstructorsMentor = () => {
       <PageTitle title={"Our Instructors"}></PageTitle>
       <Zoom><h2 className='text-center text-2xl font-bold my-3'>Decade of Teaching <span className='text-warning'>Experience</span></h2></Zoom>
 
-      <div className="grid  grid-cols-1 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
+      <div  className="grid  grid-cols-1 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
         {instructorsMentor.map((instructor, index) => (
           <Card key={instructor._id} className=''>
             <CardActionArea>
@@ -85,7 +85,7 @@ const InstructorsMentor = () => {
                       }}
                       type="button"
                       className='btn btn-link btn-info flex items-center px-0'>
-                      Classes name <FcExpand></FcExpand>
+                      Classes <FcExpand></FcExpand>
                     </button>
                   </div>
                 </Typography>

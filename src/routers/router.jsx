@@ -62,14 +62,14 @@ import CheckOutFrom from "../pages/DashBoard/ChekOutFrom/ChekOutFrom";
         //   path:'userhome',
         //   element:<StudentRoute><UserHome></UserHome></StudentRoute>
         // },
-        {
-          path:'adminhome',
-          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
-        },
-        {
-          path:'instructorhome',
-          element:<InstructorRoutes><InstructorHome></InstructorHome></InstructorRoutes>
-        },
+        // {
+        //   path:'adminhome',
+        //   element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+        // },
+        // {
+        //   path:'instructorhome',
+        //   element:<InstructorRoutes><InstructorHome></InstructorHome></InstructorRoutes>
+        // },
         {
           path:'manageUsers',
           element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>

@@ -15,11 +15,8 @@ const Classes = () => {
   const { user } = useAuth()
   const [axiosSecure] =useAxiosSecure()
   const location = useLocation();
-  const { data: userRole = {},} = useQuery(['users'], async () => {
-    const res = await axiosSecure.get(`/userStatus/${user?.email}`);
-    return res.data;
-  });
-  console.log(userRole)
+
+
 
   const { data: classes = [], refetch } = useQuery({
     queryKey: ['classes'],
@@ -121,7 +118,7 @@ const Classes = () => {
 
                   </CardContent>
                   <CardActions>
-                    <Button disabled={userRole.role === 'admin' ||  userRole.role === 'instructor' || item.seats === 0}  onClick={() => handleSelectClass(item)} className='animate__animated animate__jello' size="medium">Select Class</Button>
+                    <Button disabled={item.seats === 0}  onClick={() => handleSelectClass(item)} className='animate__animated animate__jello' size="medium">Select Class</Button>
 
                   </CardActions>
                 </Card>

@@ -5,6 +5,7 @@ import useClass from '../../../components/hooks/useclass';
 import useAxiosSecure from '../../../components/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const MyClasses = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -62,6 +63,7 @@ const MyClasses = () => {
         <Helmet>
           <title>Tasnia YMS | My Classes</title>
         </Helmet>
+        <TitleStyle first={"My"} second={"Classes"}></TitleStyle>
         <div className="overflow-x-auto   ">
           <table className="table  text-center">
             {/* head */}

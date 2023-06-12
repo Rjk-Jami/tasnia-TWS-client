@@ -17,3 +17,7 @@
     margin-left: 8px;
     color: #888;
   }
+  .active-link {
+    color: red;
+    /* Add any additional styles you want for the active link */
+  }

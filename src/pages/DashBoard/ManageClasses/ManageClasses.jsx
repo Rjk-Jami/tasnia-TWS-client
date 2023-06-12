@@ -5,6 +5,7 @@ import useAuth from '../../../components/hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const ManageClasses = () => {
     const [updateItem, setUpdateItem] = useState(null);
@@ -103,6 +104,7 @@ const ManageClasses = () => {
             <Helmet>
                 <title>Tasnia YMS | Manage Classes</title>
             </Helmet>
+            <TitleStyle first={"Manage"} second={"Classes"}></TitleStyle>
             <div className="overflow-x-auto w-full  ">
                 <table className="table  text-center ">
                     {/* head */}

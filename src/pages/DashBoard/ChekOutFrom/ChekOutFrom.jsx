@@ -102,7 +102,7 @@ const CheckOutFrom = ({selectedClass}) => {
 
     return (
         <>
-        <form onSubmit={handleSubmit} className='w-10/12 mx-auto'>
+        <form onSubmit={handleSubmit} className='w-10/12 mx-auto my-5'>
             <CardElement
                 options={{
                     style: {
@@ -119,7 +119,7 @@ const CheckOutFrom = ({selectedClass}) => {
                     },
                 }}
             />
-            <div className="flex justify-center ">
+            <div className="flex justify-center mt-5">
                 <button className=' btn btn-outline btn-primary btn-wide' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>

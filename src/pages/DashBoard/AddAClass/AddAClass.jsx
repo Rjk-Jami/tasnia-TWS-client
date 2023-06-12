@@ -4,6 +4,7 @@ import useAuth from '../../../components/hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../components/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const AddAClass = () => {
     const { user } = useAuth()
@@ -48,7 +49,7 @@ const AddAClass = () => {
             <Helmet>
                 <title>Tasnia YMS | Add a Class</title>
             </Helmet>
-
+            <TitleStyle first={"Add a"} second={"Class"}></TitleStyle>
             <div className=" w-2/3 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className=" grid grid-cols-2 gap-3 mx-3">

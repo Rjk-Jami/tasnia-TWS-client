@@ -4,6 +4,7 @@ import useAuth from '../../../components/hooks/useAuth';
 import useAxiosSecure from '../../../components/hooks/useAxiosSecure';
 import { useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const EnrolledClasses = () => {
     const { user } = useAuth()
@@ -17,6 +18,8 @@ const EnrolledClasses = () => {
         <Helmet>
                 <title>Tasnia YMS | Enrolled Classes</title>
             </Helmet>
+            <TitleStyle first={"Enrolled"} second={"Classes"}></TitleStyle>
+
             <div className="overflow-x-auto w-full">
                 <table className="table w-full text-center" >
                     {/* head */}

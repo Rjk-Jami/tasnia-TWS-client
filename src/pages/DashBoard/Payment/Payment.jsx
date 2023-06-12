@@ -5,6 +5,7 @@ import useSelectedClasses from '../../../components/hooks/useSelectedClasses';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckOutFrom from '../ChekOutFrom/ChekOutFrom';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 //stripe key
 const stripePromise = loadStripe(import.meta.env.VITE_Publishable_key);
@@ -23,6 +24,8 @@ const Payment = () => {
             <Helmet>
                 <title>Tasnia YMS | Payment</title>
             </Helmet>
+            <TitleStyle first={""} second={"Payment"}></TitleStyle>
+
             <Elements stripe={stripePromise}>
                 <CheckOutFrom selectedClass={selectedClass}  ></CheckOutFrom>
             </Elements>

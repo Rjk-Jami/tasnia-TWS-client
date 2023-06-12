@@ -6,6 +6,7 @@ import React from 'react';
 import { Bounce, Fade } from 'react-awesome-reveal';
 import useAuth from '../../../components/hooks/useAuth';
 import Swal from 'sweetalert2';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const PopularClasses = () => {
     const { user } = useAuth()
@@ -53,15 +54,11 @@ const PopularClasses = () => {
       }})
       }
     return (<>
-        <Fade>
-           <div className=" my-3 py-2 w-1/2 mx-auto rounded-full" data-theme="retro">
-                <h2 className="text-3xl md:text-5xl font-extrabold text-neutral font-serif text-center my-2">Our Top <span className='text-warning'>Classes</span></h2>
-            </div>
-           </Fade>
+        <TitleStyle first={"Our Top"} second={"Classes"}></TitleStyle>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto ">
         {classes.map((item, i)=>
             <div  data-theme="pastel"  key={i}>
-             <Bounce>
+             <Fade>
                    
             <Card  className='hover:bg-primary hover:bg-opacity-20 ' sx={{ display: 'flex' ,}}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -89,7 +86,7 @@ const PopularClasses = () => {
         alt="Live from space album cover"
       />
     </Card>
-             </Bounce>
+             </Fade>
         </div>
        ) }
         </div>

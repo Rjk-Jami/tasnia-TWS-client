@@ -9,6 +9,7 @@ import { Button, Fade } from '@mui/material';
 import Swal from 'sweetalert2';
 import { FcFullTrash, FcMoneyTransfer } from 'react-icons/fc';
 import useSelectedClasses from '../../../components/hooks/useSelectedClasses';
+import TitleStyle from '../../../components/TitleStyle/TitleStyle';
 
 const SelectedClasses = () => {
     const { user } = useAuth()
@@ -45,6 +46,7 @@ const SelectedClasses = () => {
             <Helmet>
                 <title>Tasnia YMS | Selected Classes</title>
             </Helmet>
+            <TitleStyle first={"Selected"} second={"Classes"}></TitleStyle>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full text-center" >
                     {/* head */}
