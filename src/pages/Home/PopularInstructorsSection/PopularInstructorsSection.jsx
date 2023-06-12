@@ -9,7 +9,7 @@ const PopularInstructorsSection = () => {
     const { data: instructorsMentor = [], refetch } = useQuery({
         queryKey: ['instructors', ],
         queryFn: async () => {
-          const res = await axios.get(`http://localhost:5000/instructorsMentor`)
+          const res = await axios.get(`https://tasnia-yoga-and-meditation-school-server.vercel.app/instructorsMentor`)
           return res.data;
         }
       });

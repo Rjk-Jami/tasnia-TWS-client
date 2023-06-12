@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://tasnia-yoga-and-meditation-school-server.vercel.app',
   });
 
 const useAxiosSecure = () => {

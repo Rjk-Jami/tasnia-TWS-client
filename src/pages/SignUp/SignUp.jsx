@@ -25,7 +25,7 @@ const SignUp = () => {
 
             updateUserProfile(data.name, data.photo)
             .then(res=>{
-                    axios.post('http://localhost:5000/users',{name: data.name, email:data.email, photo:data.photo, gender:data.gender,
+                    axios.post('https://tasnia-yoga-and-meditation-school-server.vercel.app/users',{name: data.name, email:data.email, photo:data.photo, gender:data.gender,
                     address:data.address, phoneNumber:data.phoneNumber })
                     .then(res=> {
                         console.log(res.data)

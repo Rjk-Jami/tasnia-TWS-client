@@ -15,7 +15,7 @@ const Banner = () => {
 
     const { data: yogas = [] } = useQuery({
         queryKey: ["yoga"], queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/yoga");
+            const res = await axios.get("https://tasnia-yoga-and-meditation-school-server.vercel.app/yoga");
             console.log()
             return res.data;
         }

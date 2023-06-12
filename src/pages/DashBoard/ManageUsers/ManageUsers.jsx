@@ -25,7 +25,7 @@ const ManageUsers = () => {
   };
 
   const handleMakeAdmin = async (id) => {
-    axios.patch(`http://localhost:5000/users/admin/${id}`)
+    axios.patch(`https://tasnia-yoga-and-meditation-school-server.vercel.app/users/admin/${id}`)
         .then(res=>{
             if(res.data.modifiedCount){
                 refetch()
@@ -45,7 +45,7 @@ const ManageUsers = () => {
   
 
   const handleMakeInstructor = async (id) => {
-        axios.patch(`http://localhost:5000/users/instructor/${id}`)
+        axios.patch(`https://tasnia-yoga-and-meditation-school-server.vercel.app/users/instructor/${id}`)
         .then(res=>{
             if(res.data.modifiedCount){
                 refetch()

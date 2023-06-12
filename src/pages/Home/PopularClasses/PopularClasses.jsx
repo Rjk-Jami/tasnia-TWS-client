@@ -15,7 +15,7 @@ const PopularClasses = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-          const res = await axios(`http://localhost:5000/popularClasses`)
+          const res = await axios(`https://tasnia-yoga-and-meditation-school-server.vercel.app/popularClasses`)
           return res.data;
         }
       })
@@ -40,7 +40,7 @@ const PopularClasses = () => {
         email: user.email,
         instructorName : item.InstructorName 
       }
-      axios.post('http://localhost:5000/selectClass', selectClass)
+      axios.post('https://tasnia-yoga-and-meditation-school-server.vercel.app/selectClass', selectClass)
       .then(res=>{
         if(res.data.insertedId){
           refetch()
