@@ -8,13 +8,15 @@ import { Fade, JackInTheBox, Slide } from 'react-awesome-reveal';
 import useAuth from '../../components/hooks/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../components/hooks/useAxiosSecure';
 
 const Classes = () => {
 
   const { user } = useAuth()
+  const [axiosSecure] =useAxiosSecure()
   const location = useLocation();
   const { data: userRole = {},} = useQuery(['users'], async () => {
-    const res = await axios.get(`http://localhost:5000/userStatus/${user?.email}`);
+    const res = await axiosSecure.get(`/userStatus/${user?.email}`);
     return res.data;
   });
   console.log(userRole)
@@ -45,7 +47,8 @@ const Classes = () => {
         name: item.name,
         image: item.image,
         price: item.price,
-        email: user.email
+        email: user.email,
+        instructorName : item.InstructorName 
       }
       console.log(selectClass)
       axios.post('http://localhost:5000/selectClass', selectClass)

@@ -18,7 +18,10 @@ import MyClasses from "../pages/DashBoard/MyClasses/MyClasses";
 import ManageClasses from "../pages/DashBoard/ManageClasses/ManageClasses";
 import AdminRoute from "./AdminRoute";
 import InstructorRoutes from "./InstructorRoutes";
-import StudentRoute from "./StudentRoute";
+import SelectedClasses from "../pages/DashBoard/SelectedClasses/SelectedClasses";
+import EnrolledClasses from "../pages/DashBoard/EnrolledClasses/EnrolledClasses";
+import Payment from "../pages/DashBoard/Payment/Payment";
+import ChekOutFrom from "../pages/DashBoard/ChekOutFrom/ChekOutFrom";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -82,6 +85,24 @@ import StudentRoute from "./StudentRoute";
         {
           path:'myClasses',
           element:<InstructorRoutes><MyClasses></MyClasses></InstructorRoutes>
+        },
+        {
+          path:'selectedClasses',
+          element:<SelectedClasses></SelectedClasses>
+        },
+        {
+          path:'enrolledClasses',
+          element:<EnrolledClasses></EnrolledClasses>
+        },
+        {
+          path:'payment/:id',
+          element:<Payment></Payment>,
+         
+        },
+        {
+          path:'CheckOutFrom',
+          element:<ChekOutFrom></ChekOutFrom>,
+         
         },
       ]
     }
