@@ -9,7 +9,8 @@ import "./style.css"
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
+
 const Banner = () => {
 
     const { data: yogas = [] } = useQuery({
@@ -40,9 +41,9 @@ const Banner = () => {
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="max-w-xl">
-                            <h1 className="mb-5  text-3xl md:text-5xl font-bold">{yoga?.name}</h1>
-                            <p className="mb-5">{yoga?.details}</p>
-                            <button className="btn btn-warning disabled"><FaAngleDoubleLeft></FaAngleDoubleLeft> Step : {index + 1}<FaAngleDoubleRight /></button>
+                            <Fade><h1 className=" text-3xl md:text-5xl font-bold">{yoga?.name}</h1></Fade>
+                            <Zoom><p className="">{yoga?.details}</p></Zoom>
+                            <button className="animate__rubberBand animate__animated btn btn-warning disabled"><FaAngleDoubleLeft></FaAngleDoubleLeft> Step : {index + 1}<FaAngleDoubleRight /></button>
                         </div>
                     </div>
                 </div>
@@ -54,11 +55,7 @@ const Banner = () => {
 
                 </Swiper>
             </div>
-           <Fade>
-           <div className="">
-                <h2 className="text-5xl font-bold text-primary text-center my-2">Yoga Poses for Beginners</h2>
-            </div>
-           </Fade>
+           
 
         </div>
     )

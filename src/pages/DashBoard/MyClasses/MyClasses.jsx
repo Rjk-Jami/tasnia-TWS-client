@@ -35,7 +35,8 @@ const MyClasses = () => {
 
   const onSubmitUpdate = (data) => {
     data.seats = parseFloat(data.seats)
-    data.seats = parseFloat(data.seats)
+    data.price = parseFloat(data.price)
+    
     console.log(data);
 
     axiosSecure.patch(`/updateClass/${updateItem?._id}`, data)

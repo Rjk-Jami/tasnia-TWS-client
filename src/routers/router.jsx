@@ -21,7 +21,7 @@ import InstructorRoutes from "./InstructorRoutes";
 import SelectedClasses from "../pages/DashBoard/SelectedClasses/SelectedClasses";
 import EnrolledClasses from "../pages/DashBoard/EnrolledClasses/EnrolledClasses";
 import Payment from "../pages/DashBoard/Payment/Payment";
-import ChekOutFrom from "../pages/DashBoard/ChekOutFrom/ChekOutFrom";
+import CheckOutFrom from "../pages/DashBoard/ChekOutFrom/ChekOutFrom";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -101,7 +101,7 @@ import ChekOutFrom from "../pages/DashBoard/ChekOutFrom/ChekOutFrom";
         },
         {
           path:'CheckOutFrom',
-          element:<ChekOutFrom></ChekOutFrom>,
+          element:<CheckOutFrom></CheckOutFrom>,
          
         },
       ]
